@@ -24,15 +24,14 @@ You can run the container like this (change --rm with -d if you don't want the c
 
 prepare_docker_timezone() {
   # https://www.waysquare.com/how-to-change-docker-timezone/
-  MOUNTS+=" --mount type=bind,source=/etc/timezone,target=/etc/timezone,readonly"
-  MOUNTS+=" --mount type=bind,source=/etc/localtime,target=/etc/localtime,readonly"
+  ENV_VARS+=" --env=TZ=$(cat /etc/timezone)"
 }
 
 prepare_docker_timezone
 
 docker run --rm -it \
   --name "ubuntu-tini" \
-  ${MOUNTS} \
+  ${ENV_VARS} \
   rubensa/ubuntu-tini
 ```
 
