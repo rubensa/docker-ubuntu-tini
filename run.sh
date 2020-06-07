@@ -10,4 +10,4 @@ prepare_docker_timezone
 docker run --rm -it \
   --name "ubuntu-tini" \
   ${ENV_VARS} \
-  rubensa/ubuntu-tini
+  rubensa/ubuntu-tini:20.04
