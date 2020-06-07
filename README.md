@@ -1,4 +1,4 @@
-# Docker image based on ubuntu and running tini init system
+# Docker image based on ubuntu 20.04 and running tini init system
 
 This is a Docker image based on [ubuntu](https://hub.docker.com/_/ubuntu/) running [tini](https://github.com/krallin/tini) init system inside a container.
 
@@ -11,7 +11,7 @@ You can build the image like this:
 
 DOCKER_REPOSITORY_NAME="rubensa"
 DOCKER_IMAGE_NAME="ubuntu-tini"
-DOCKER_IMAGE_TAG="latest"
+DOCKER_IMAGE_TAG="20.04"
 
 docker buildx build --platform=linux/amd64,linux/arm64 --no-cache \
   -t "${DOCKER_REPOSITORY_NAME}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}" \
@@ -32,7 +32,7 @@ You can run the container like this (change --rm with -d if you don't want the c
 
 DOCKER_REPOSITORY_NAME="rubensa"
 DOCKER_IMAGE_NAME="ubuntu-tini"
-DOCKER_IMAGE_TAG="latest"
+DOCKER_IMAGE_TAG="20.04"
 
 prepare_docker_timezone() {
   # https://www.waysquare.com/how-to-change-docker-timezone/
