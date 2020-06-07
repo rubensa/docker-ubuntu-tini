@@ -1,4 +1,4 @@
-# Docker image based on ubuntu and running tini init system
+# Docker image based on ubuntu 18.04 and running tini init system
 
 This is a Docker image based on [ubuntu](https://hub.docker.com/_/ubuntu/) running [tini](https://github.com/krallin/tini) init system inside a container.
 
@@ -10,7 +10,7 @@ You can build the image like this:
 #!/usr/bin/env bash
 
 docker build --no-cache \
-	-t "rubensa/ubuntu-tini" \
+	-t "rubensa/ubuntu-tini:18.04" \
 	--label "maintainer=Ruben Suarez <rubensa@gmail.com>" \
 	.
 ```
@@ -32,7 +32,7 @@ prepare_docker_timezone
 docker run --rm -it \
   --name "ubuntu-tini" \
   ${ENV_VARS} \
-  rubensa/ubuntu-tini
+  rubensa/ubuntu-tini:18.04
 ```
 
 ## Connect

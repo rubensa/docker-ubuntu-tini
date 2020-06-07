@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:18.04
 LABEL author="Ruben Suarez <rubensa@gmail.com>"
 
 ARG TINI_VERSION=v0.19.0
