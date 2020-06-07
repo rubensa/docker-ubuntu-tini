@@ -2,7 +2,7 @@
 
 DOCKER_REPOSITORY_NAME="rubensa"
 DOCKER_IMAGE_NAME="ubuntu-tini"
-DOCKER_IMAGE_TAG="latest"
+DOCKER_IMAGE_TAG="18.04"
 
 prepare_docker_timezone() {
   # https://www.waysquare.com/how-to-change-docker-timezone/

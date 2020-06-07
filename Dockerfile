@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1.4
-FROM ubuntu
+# Ubuntu 18.04 LTS (Bionic Beaver) Release Build
+FROM ubuntu:bionic
 LABEL author="Ruben Suarez <rubensa@gmail.com>"
 
 # Architecture component of TARGETPLATFORM (platform of the build result)
