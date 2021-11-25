@@ -1,6 +1,7 @@
 FROM ubuntu
 LABEL author="Ruben Suarez <rubensa@gmail.com>"
 
+# Tini version to install (https://github.com/krallin/tini/releases)
 ARG TINI_VERSION=v0.19.0
 
 # Add Tini
