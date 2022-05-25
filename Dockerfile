@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1.4
-FROM ubuntu
+# Ubuntu 22.04 LTS (Jammy Jellyfish) Release Build
+FROM ubuntu:jammy
 LABEL author="Ruben Suarez <rubensa@gmail.com>"
 
 # Architecture component of TARGETPLATFORM (platform of the build result)
