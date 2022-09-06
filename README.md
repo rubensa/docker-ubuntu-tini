@@ -9,14 +9,18 @@ You can build the image like this:
 ```
 #!/usr/bin/env bash
 
+DOCKER_REPOSITORY_NAME="rubensa"
+DOCKER_IMAGE_NAME="ubuntu-tini"
+DOCKER_IMAGE_TAG="latest"
+
 docker buildx build --platform=linux/amd64,linux/arm64 --no-cache \
-	-t "rubensa/ubuntu-tini" \
-	--label "maintainer=Ruben Suarez <rubensa@gmail.com>" \
-	.
+  -t "${DOCKER_REPOSITORY_NAME}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}" \
+  --label "maintainer=Ruben Suarez <rubensa@gmail.com>" \
+  .
 
 docker buildx build --load \
-	-t "rubensa/ubuntu-tini" \
-	.
+  -t "${DOCKER_REPOSITORY_NAME}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}" \
+  .
 ```
 
 ## Running
@@ -26,6 +30,10 @@ You can run the container like this (change --rm with -d if you don't want the c
 ```
 #!/usr/bin/env bash
 
+DOCKER_REPOSITORY_NAME="rubensa"
+DOCKER_IMAGE_NAME="ubuntu-tini"
+DOCKER_IMAGE_TAG="latest"
+
 prepare_docker_timezone() {
   # https://www.waysquare.com/how-to-change-docker-timezone/
   ENV_VARS+=" --env=TZ=$(cat /etc/timezone)"
@@ -33,10 +41,10 @@ prepare_docker_timezone() {
 
 prepare_docker_timezone
 
-docker run --rm -it \
-  --name "ubuntu-tini" \
+docker run -it \
+  --name "${DOCKER_IMAGE_NAME}" \
   ${ENV_VARS} \
-  rubensa/ubuntu-tini
+  "${DOCKER_REPOSITORY_NAME}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}" "$@"
 ```
 
 ## Connect
@@ -46,8 +54,10 @@ You can connect to the running container like this:
 ```
 #!/usr/bin/env bash
 
+DOCKER_IMAGE_NAME="ubuntu-tini"
+
 docker exec -it \
-  ubuntu-tini \
+  "${DOCKER_IMAGE_NAME}" \
   bash -l
 ```
 
@@ -58,8 +68,10 @@ You can stop the running container like this:
 ```
 #!/usr/bin/env bash
 
-docker stop \
-  ubuntu-tini
+DOCKER_IMAGE_NAME="ubuntu-tini"
+
+docker stop  \
+  "${DOCKER_IMAGE_NAME}"
 ```
 
 ## Start
@@ -69,8 +81,10 @@ If you run the container without --rm you can start it again like this:
 ```
 #!/usr/bin/env bash
 
+DOCKER_IMAGE_NAME="ubuntu-tini"
+
 docker start \
-  ubuntu-tini
+  "${DOCKER_IMAGE_NAME}"
 ```
 
 ## Remove
@@ -80,6 +94,8 @@ If you run the container without --rm you can remove once stopped like this:
 ```
 #!/usr/bin/env bash
 
+DOCKER_IMAGE_NAME="ubuntu-tini"
+
 docker rm \
-  ubuntu-tini
+  "${DOCKER_IMAGE_NAME}"
 ```
