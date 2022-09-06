@@ -4,6 +4,9 @@ on:
   # Creating a reusable workflow
   workflow_call:
     inputs:
+      DOCKER_REPOSITORY_NAME:
+        required: true
+        type: string
       DOCKER_IMAGE_NAME:
         required: true
         type: string
@@ -74,7 +77,7 @@ jobs:
           platforms: ${{ inputs.DOCKER_IMAGE_PLATFORMS }}
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ inputs.DOCKER_IMAGE_NAME }}:${{ inputs.DOCKER_IMAGE_TAG }}
+          tags: ${{ inputs.DOCKER_REPOSITORY_NAME }}/${{ inputs.DOCKER_IMAGE_NAME }}:${{ inputs.DOCKER_IMAGE_TAG }}
           labels: maintainer=Ruben Suarez <rubensa@gmail.com>
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
