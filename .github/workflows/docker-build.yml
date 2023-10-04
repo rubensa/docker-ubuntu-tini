@@ -17,6 +17,10 @@ on:
         required: false
         type: string
         default: "linux/amd64,linux/arm64"
+      FREE_RUNNER_DISK_SPACE_BEFORE_BUILD:
+        required: false
+        type: boolean
+        default: false
     secrets:
       DOCKER_HUB_USERNAME:
         required: true
@@ -32,6 +36,12 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # GitHub Actions to Free Disk Space on Ubuntu runners
+      # https://github.com/jlumbroso/free-disk-space
+      - name: Free Disk Space (Ubuntu)
+        if: ${{ inputs.FREE_RUNNER_DISK_SPACE_BEFORE_BUILD }}
+        uses: jlumbroso/free-disk-space@v1.3.0
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       # https://github.com/actions/checkout
       - name: Checkout
