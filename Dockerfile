@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1.4
-FROM ubuntu
+# Ubuntu 24.04 LTS (Noble Numbat) Release Build
+FROM ubuntu:noble
 LABEL author="Ruben Suarez <rubensa@gmail.com>"
 
 # Architecture component of TARGETPLATFORM (platform of the build result)
