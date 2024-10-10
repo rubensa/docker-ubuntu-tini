@@ -61,7 +61,7 @@ jobs:
       # Avoid having to re-download docker images and reduces the number of pulls against Docker Hub
       # https://github.com/actions/cache
       - name: Cache Docker layers
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ github.sha }}
